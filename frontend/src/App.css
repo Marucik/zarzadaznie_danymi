@@ -1,0 +1,24 @@
+.App {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  background-color: lightGrey;
+}
+
+.firstButton {
+  position: absolute !important;
+  left: 1rem;
+  top: 1rem;
+}
+
+.App-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.dataDate {
+  margin: 0 1rem;
+  font-size: 2rem;
+}
