@@ -76,7 +76,7 @@ const BubbleChart = (props: any) => {
             id="circleSvg"
             r={radiusScale((item as unknown as { size: number }).size)}
             // fill={props.bubblesData[index].fillColor}
-            fill={"#0288d1"}
+            fill={confirmed ? "#0288d1" : "#e53935"}
             stroke={strokeColor}
             strokeWidth="2"
           />
