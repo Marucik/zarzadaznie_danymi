@@ -23,7 +23,7 @@ namespace Infrastructure.Repositories
 
       services.AddSingleton(mongoSettings);
 
-      services.AddScoped<IMongoClient>(x =>
+      services.AddSingleton<IMongoClient>(x =>
       {
         return new MongoClient(mongoSettings.ConnectionString);
       });
@@ -35,7 +35,7 @@ namespace Infrastructure.Repositories
         cm.AutoMap();
       });
 
-      services.AddScoped<IHistoricalRepository, HistoricalRepository>();
+      services.AddSingleton<IHistoricalRepository, HistoricalRepository>();
     }
   }
 }

@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Infrastructure.CronJob;
 using Infrastructure.Parser;
 using Infrastructure.Repositories;
+using Infrastructure.Services.CronJobService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -43,7 +45,11 @@ namespace Api
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api", Version = "v1" });
       });
       services.AddMongoDb();
-      services.AddScoped<IDataParser, DataParser>();
+      services.AddSingleton<IDataParser, DataParser>();
+      services.AddCronJob<GetDataFromApi>(c =>
+      {
+        c.CronExpression = @"0 4 * * *";
+      });
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
